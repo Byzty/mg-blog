@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class FormsController extends BaseController {
     private static final String FORMS_TEMPLATE_NAME = "forms";
 
-    @RequestMapping(value = "forms", method = RequestMethod.GET)
+    @RequestMapping(value = FORMS_TEMPLATE_NAME, method = RequestMethod.GET)
     public String toCharts() {
         return i18n(FORMS_TEMPLATE_NAME);
     }

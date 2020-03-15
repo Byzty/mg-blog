@@ -1,5 +1,6 @@
 package org.mg.blog.blogadmin.controller;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,7 @@ import static org.mg.blog.blogadmin.controller.LoginController.LOGIN_TEMPLATE_NA
 public class IndexController extends BaseController {
     public static final String LOGIN_SUCCESS_FLAG = "userInfo";
 
-    @RequestMapping(value = {"", "index"}, method = RequestMethod.GET)
+    @RequestMapping(value = {StringUtils.EMPTY, LOGIN_SUCCESS_FLAG}, method = RequestMethod.GET)
     public String index(HttpSession session) {
         if (ObjectUtils.isEmpty(session.getAttribute(LOGIN_SUCCESS_FLAG))) {
             return i18n(LOGIN_TEMPLATE_NAME);

@@ -24,12 +24,12 @@ public class LoginController extends BaseController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "login", method = RequestMethod.GET)
+    @RequestMapping(value = LOGIN_TEMPLATE_NAME, method = RequestMethod.GET)
     public String toLogin() {
         return i18n(LOGIN_TEMPLATE_NAME);
     }
 
-    @RequestMapping(value = "login", method = RequestMethod.POST)
+    @RequestMapping(value = LOGIN_TEMPLATE_NAME, method = RequestMethod.POST)
     public String doLogin(UserVo user, Model model, HttpSession session) {
         if (CollectionUtils.isEmpty(userService.query(user))) {
             model.addAttribute(LOGIN_FAILED_FLAG, true);
@@ -39,7 +39,7 @@ public class LoginController extends BaseController {
         return i18n(INDEX_TEMPLATE_NAME);
     }
 
-    @RequestMapping(value = "register", method = RequestMethod.GET)
+    @RequestMapping(value = REGISTER_TEMPLATE_NAME, method = RequestMethod.GET)
     public String toRegister() {
         return i18n(REGISTER_TEMPLATE_NAME);
     }

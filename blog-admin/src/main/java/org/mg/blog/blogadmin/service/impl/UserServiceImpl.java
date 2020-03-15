@@ -10,7 +10,9 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-    private static String USER_QUERY_SQL = "select user_name,pass from tbl_user where user_name = ? and pass = ?";
+    private static final String USER_QUERY_SQL = "select user_name,pass from tbl_user where user_name = ? and pass = ?";
+
+    private static final String COLUMN_NAME_USERNAME = "user_name";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -19,7 +21,7 @@ public class UserServiceImpl implements UserService {
     public List<UserVo> query(UserVo user) {
         return jdbcTemplate.query(USER_QUERY_SQL, (resultSet, i) -> {
             UserVo userVo = new UserVo();
-            userVo.setUserName(resultSet.getString("user_name"));
+            userVo.setUserName(resultSet.getString(COLUMN_NAME_USERNAME));
             return userVo;
         }, user.getUserName(), user.getPass());
     }
