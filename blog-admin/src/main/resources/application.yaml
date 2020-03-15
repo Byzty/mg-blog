@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    password: 7hV#7612
+    username: minggui98
+    url: jdbc:mysql://rm-bp10c9m597111126xeo.mysql.rds.aliyuncs.com:3306/blog
+  freemarker:
+    suffix: .ftl
+server:
+  port: 8080
